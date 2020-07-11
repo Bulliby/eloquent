@@ -10,22 +10,35 @@ function inScript(code, script) {
 
 function iterString(string) {
     for(let i = 0; i != string.length; i++) {
-        iterScript(i);
+        countInString(string.codePointAt(i));
     }
 }
 
-let iterScript = function(index) {
-    let stats = {};
+let countInString = function(index) {
     SCRIPTS.forEach((script) => {
-        let count = 0;
-        if(inScript(string.codePointAt(index), script)) {
-            count++;
+        if(inScript(index, script)) {
+            createOrAdd(script.name);
         }
-        stats[script.name] = count;
-        return stats;
     });
-
-    return stats;
 }
 
-console.log(iterString(string));
+function createOrAdd(name)
+{
+    if (findItemByName(name).length == 0) {
+        stats.push({name, count : 1});
+    } else {
+        let test = findItemByName(name); 
+        test.count =+ 1
+    }
+}
+
+function findItemByName(name) 
+{
+    return stats.filter((el) => {
+        return el.name == name;
+    });
+}
+
+let stats = [];
+iterString(string);
+console.log(stats);

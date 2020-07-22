@@ -14,6 +14,10 @@ class Group
         }
     }
 
+    has(elem) {
+        return !(this.alreadyExists(elem) === -1)
+    }
+
     delete(elem) {
         let index;
         if ((index = this.alreadyExists(elem)) != -1) {
@@ -74,6 +78,7 @@ mySet.add("tata");
 mySet.add("tutu");
 mySet.add("TUTU");
 mySet.add("toto");
+console.log(mySet.has("roto"));
 
 mySet.from([10, 111]);
 

@@ -1,1 +1,1 @@
-# Exercices from javascript eloquent book
+# Exercices from eloquent javascript book

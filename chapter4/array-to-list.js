@@ -1,24 +1,14 @@
 const util = require('util')
 
 function arrayToList(array) {
-    let last = null;
     array = reverseArrayInPlace(array);
-    for (i = 0; i != array.length; i++) {
-        if (last == null) {
-            let node = {
-                value: array[i],
-                next: null
-            }
-            last = node
-        } else {
-            let node = {
-                value: array[i],
-                next: last
-            }
-            last = node
-        }
+    let lastNode = { value: array[0], next: null }
+    for (i = 1; i != array.length; i++) {
+        let node = { value: array[i], next: lastNode }
+        lastNode = node
     }
-    console.log(util.inspect(last, {showHidden: false, depth: null}))
+
+    return lastNode
 }
 
 function reverseArrayInPlace(array) {
@@ -33,4 +23,4 @@ function reverseArrayInPlace(array) {
     return array;
 }
 
-arrayToList([1,2,3,4,5,6,7,8,9,10]);
+console.log(util.inspect(arrayToList([1,2,3,4,5,6,7,8,9,10]), {showHidden: false, depth: null}))
